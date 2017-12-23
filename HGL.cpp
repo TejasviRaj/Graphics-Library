@@ -16,14 +16,16 @@ void line::draw()
   float dx=x2-x1;
   float dy=y2-y1;
   float steps,xinr,yinr;
+  float x=x1;
+  float y=y1;
   if (dx==0)
   {
     steps=fabs(dy);
     yinr=dy/steps;
     for (size_t i = 0; i < steps; i++)
       {
-        point (x1,y1,color);
-        y1+=yinr;
+        point (x,y,color);
+        y+=yinr;
       }
   }
   else if (dy==0)
@@ -32,8 +34,8 @@ void line::draw()
     xinr=dx/steps;
     for (size_t i = 0; i < steps; i++)
       {
-        point (x1,y1,color);
-        x1+=xinr;
+        point (x,y,color);
+        x+=xinr;
       }
   }
   else
@@ -48,9 +50,9 @@ void line::draw()
 
       for (size_t i = 0; i < steps; i++)
         {
-          point (x1,y1,color);
-          x1=x1+xinr;
-          y1=y1+yinr;
+          point (x,y,color);
+          x=x+xinr;
+          y=y+yinr;
         }
   }
 }
@@ -201,7 +203,8 @@ void rectangle::draw()
 
 line line::translate(float xt,float yt,string str)
 {
-  return line(x1+xt,y1+yt,x1+xt,y2+yt,color,str);
+  //line(x1+xt,50,x2+xt,y2+yt,color,str);
+  return line(x1+xt,y1+yt,x2+xt,y2+yt,color,str);
 
 }
 
@@ -223,5 +226,35 @@ triangle triangle::translate(float xt,float yt,string str)
 rectangle rectangle::translate(float xt,float yt,string str)
 {
   return rectangle(x1+xt,y1+yt,x2+xt,y2+yt,color,str);
+
+}
+
+
+line line::scale(float xs,float ys,string str)
+{
+  return line(x1*xs,y1*ys,x2*xs,y2*ys,color,str);
+
+}
+
+circle circle::scale(float s,string str)
+{
+  //return circle(xc+xt,yc+yt,r,color);
+  return circle(xc,yc,r/sqrt(s),color,str);
+
+}
+
+//ellipse ????????
+ellipse ellipse::scale(float xs,float ys,string str)
+{
+  return ellipse(xc,yc,rx/xs,ry/ys,color,str);
+}
+
+triangle triangle::scale(float xs,float ys,string str)
+{
+  return triangle(x1*xs,y1*ys,x2*xs,y2*ys,x3*xs,y3*ys,color,str);
+}
+rectangle rectangle::scale(float xs,float ys,string str)
+{
+  return rectangle(x1*xs,y1*ys,x2*xs,y2*ys,color,str);
 
 }

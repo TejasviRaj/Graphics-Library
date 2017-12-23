@@ -18,14 +18,14 @@ int main(int argc, char **argv) {
 
   HGL_init(argc,argv);
 
- line(300,300,400,400,WHITE);
+ line l1(300,300,400,400,WHITE);
   line l2(300,300,400,200,BLUE);
   line l3(300,300,200,400,GREEN);
-  line(300,300,200,200,RED);
-  line(300,300,300,400,WHITE);
-  line(300,300,300,200,BLUE);
-  line(300,300,200,300,GREEN);
-  line(300,300,400,300,RED);
+  line l4(300,300,200,200,RED);
+  line l5(300,300,300,400,WHITE);
+  line l6(300,300,300,200,BLUE);
+  line l7(300,300,200,300,GREEN);
+  line l8(300,300,400,300,RED);
   //  line(300,300,400,400,BLUE);
   h(5);
   circle c(300,300,sqrt(100*100+100*100));
@@ -33,6 +33,7 @@ int main(int argc, char **argv) {
   ellipse(300,300,100,50);
   rectangle r (200,200,400,400);
   triangle t (200,200,400,200,300,400,YELLOW);
-  c.translate(-100,-100,"nodraw").translate(-100,-100);
+//  c.translate(-100,-100,"nodraw").scale(2);
+  r.translate(-100,-100,"nodraw").scale(1.2,1.2);
   HGL_End();
 }

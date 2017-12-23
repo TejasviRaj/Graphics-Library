@@ -19,6 +19,7 @@ class line
     void draw();
 
   line translate(float xt,float yt,string str="Draw");
+  line scale(float xs,float ys,string str="Draw");
 };
 
 class circle
@@ -29,6 +30,8 @@ class circle
     circle(float xc,float yc,float r, Color color=WHITE,string str="Draw");
     void draw();
     circle translate(float xt,float yt,string str="Draw");
+    circle scale(float s,string str="Draw");
+
 };
 
 class ellipse
@@ -39,6 +42,8 @@ class ellipse
     ellipse(float xc,float yc,float rx,float ry, Color color=WHITE,string str="Draw");
     void draw();
     ellipse translate(float xt,float yt,string str="Draw");
+    ellipse scale(float xs,float ys,string str="Draw");
+
 
 };
 
@@ -50,6 +55,8 @@ public:
   triangle(float x1,float y1,float x2,float y2,float x3,float y3, Color color=WHITE,string str="Draw");
   void draw();
   triangle translate(float xt,float yt,string str="Draw");
+  triangle scale(float xs,float ys,string str="Draw");
+
 
 };
 
@@ -61,5 +68,7 @@ public:
   rectangle(float x1,float y1,float x2,float y2,Color color=WHITE,string str="Draw");
   void draw();
   rectangle translate(float xt,float yt,string str="Draw");
+  rectangle scale(float xs,float ys,string str="Draw");
+
 
 };
