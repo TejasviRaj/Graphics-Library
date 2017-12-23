@@ -15,7 +15,7 @@ class line
   float x1,y1,x2,y2;
   Color color;
   public:
-    line(float x1z,float y1z,float x2z,float y2z, Color colorz=WHITE);
+    line(float x1,float y1,float x2,float y2, Color color=WHITE);
 };
 
 class circle
@@ -32,4 +32,12 @@ class ellipse
   Color color;
   public:
     ellipse(float xc,float yc,float rx,float ry, Color color=WHITE);
+};
+
+class triangle
+{
+  float x1,y1,x2,y2,x3,y3;
+  Color color;
+public:
+  triangle(float x1,float y1,float x2,float y2,float x3,float y3, Color colorz=WHITE);
 };

@@ -31,5 +31,6 @@ int main(int argc, char **argv) {
   circle(100,100,50);
   ellipse(100,100,50,100);
   ellipse(100,100,100,50);
+  triangle(100,100,200,200,100,400);
   HGL_End();
 }
