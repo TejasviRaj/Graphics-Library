@@ -152,10 +152,19 @@ ellipse::ellipse(float xc,float yc,float rx,float ry, Color color):xc(xc),yc(yc)
 
 }
 
-triangle::triangle(float x1,float y1,float x2,float y2,float x3,float y3, Color colorz):x1(x1),y1(y1),x2(x2),y2(y2),x3(x3),y3(y3),color(color)
+triangle::triangle(float x1,float y1,float x2,float y2,float x3,float y3, Color color):x1(x1),y1(y1),x2(x2),y2(y2),x3(x3),y3(y3),color(color)
 {
-  line(x1,y1,x2,y2);
-  line(x2,y2,x3,y3);
-  line(x3,y3,x1,y1);
+  line(x1,y1,x2,y2,color);
+  line(x2,y2,x3,y3,color);
+  line(x3,y3,x1,y1,color);
+
+}
+
+rectangle::rectangle(float x1,float y1,float x2,float y2,Color color):x1(x1),y1(y1),x2(x2),y2(y2),color(color)
+{
+  line(x1,y1,x1,y2,color);
+  line(x1,y1,x2,y1,color);
+  line(x2,y2,x1,y2,color);
+  line(x2,y2,x2,y1,color);
 
 }

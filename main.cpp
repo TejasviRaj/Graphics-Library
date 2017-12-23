@@ -28,9 +28,11 @@ int main(int argc, char **argv) {
   line(300,300,400,300,RED);
   //  line(300,300,400,400,BLUE);
   h(5);
-  circle(100,100,50);
-  ellipse(100,100,50,100);
-  ellipse(100,100,100,50);
-  triangle(100,100,200,200,100,400);
+  circle(300,300,sqrt(100*100+100*100));
+  ellipse(300,300,50,100);
+  ellipse(300,300,100,50);
+  rectangle(200,200,400,400);
+  triangle(200,200,400,200,300,400,YELLOW);
+
   HGL_End();
 }
