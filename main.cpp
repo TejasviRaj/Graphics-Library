@@ -33,6 +33,6 @@ int main(int argc, char **argv) {
   ellipse(300,300,100,50);
   rectangle r (200,200,400,400);
   triangle t (200,200,400,200,300,400,YELLOW);
-  c.translate(-100,-100).translate(-100,-100);
+  c.translate(-100,-100,"nodraw").translate(-100,-100);
   HGL_End();
 }

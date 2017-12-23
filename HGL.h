@@ -15,10 +15,10 @@ class line
   float x1,y1,x2,y2;
   Color color;
   public:
-    line(float x1,float y1,float x2,float y2, Color color=WHITE);
+    line(float x1,float y1,float x2,float y2, Color color=WHITE,string str="Draw");
     void draw();
 
-  line translate(float xt,float yt);
+  line translate(float xt,float yt,string str="Draw");
 };
 
 class circle
@@ -26,9 +26,9 @@ class circle
   float xc,yc,r;
   Color color;
   public:
-    circle(float xc,float yc,float r, Color color=WHITE);
+    circle(float xc,float yc,float r, Color color=WHITE,string str="Draw");
     void draw();
-    circle translate(float xt,float yt);
+    circle translate(float xt,float yt,string str="Draw");
 };
 
 class ellipse
@@ -36,9 +36,9 @@ class ellipse
   float xc,yc,rx,ry;
   Color color;
   public:
-    ellipse(float xc,float yc,float rx,float ry, Color color=WHITE);
+    ellipse(float xc,float yc,float rx,float ry, Color color=WHITE,string str="Draw");
     void draw();
-    ellipse translate(float xt,float yt);
+    ellipse translate(float xt,float yt,string str="Draw");
 
 };
 
@@ -47,9 +47,9 @@ class triangle
   float x1,y1,x2,y2,x3,y3;
   Color color;
 public:
-  triangle(float x1,float y1,float x2,float y2,float x3,float y3, Color color=WHITE);
+  triangle(float x1,float y1,float x2,float y2,float x3,float y3, Color color=WHITE,string str="Draw");
   void draw();
-  triangle translate(float xt,float yt);
+  triangle translate(float xt,float yt,string str="Draw");
 
 };
 
@@ -58,8 +58,8 @@ class rectangle
   float x1,y1,x2,y2;
   Color color;
 public:
-  rectangle(float x1,float y1,float x2,float y2,Color color=WHITE);
+  rectangle(float x1,float y1,float x2,float y2,Color color=WHITE,string str="Draw");
   void draw();
-  rectangle translate(float xt,float yt);
+  rectangle translate(float xt,float yt,string str="Draw");
 
 };

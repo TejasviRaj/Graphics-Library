@@ -3,8 +3,10 @@ extern "C"
 #include "HGL.h"
 //#include"Color.h"
 
-line::line(float x1,float y1,float x2,float y2,Color color):x1(x1),y1(y1),x2(x2),y2(y2),color(color)
+line::line(float x1,float y1,float x2,float y2,Color color,string str):x1(x1),y1(y1),x2(x2),y2(y2),color(color)
 {
+  if (str=="nodraw")
+  return;
 draw();
 }
 
@@ -83,8 +85,10 @@ void point(float x, float y, Color color) {
 
 
 
-circle::circle(float xc,float yc,float r,Color color):xc(xc),yc(yc),r(r),color(color)
+circle::circle(float xc,float yc,float r,Color color,string str):xc(xc),yc(yc),r(r),color(color)
 {
+  if (str=="nodraw")
+  return;
   draw();
 }
 
@@ -113,8 +117,10 @@ void circle::draw()
   }
 }
 
-ellipse::ellipse(float xc,float yc,float rx,float ry, Color color):xc(xc),yc(yc),rx(rx),ry(ry),color(color)
+ellipse::ellipse(float xc,float yc,float rx,float ry, Color color,string str):xc(xc),yc(yc),rx(rx),ry(ry),color(color)
 {
+  if (str=="nodraw")
+  return;
   draw();
 }
 
@@ -162,8 +168,10 @@ void ellipse::draw()
   }
 }
 
-triangle::triangle(float x1,float y1,float x2,float y2,float x3,float y3, Color color):x1(x1),y1(y1),x2(x2),y2(y2),x3(x3),y3(y3),color(color)
+triangle::triangle(float x1,float y1,float x2,float y2,float x3,float y3, Color color,string str):x1(x1),y1(y1),x2(x2),y2(y2),x3(x3),y3(y3),color(color)
 {
+  if (str=="nodraw")
+  return;
   draw();
 }
 
@@ -174,8 +182,10 @@ void triangle::draw()
   line(x3,y3,x1,y1,color);
 }
 
-rectangle::rectangle(float x1,float y1,float x2,float y2,Color color):x1(x1),y1(y1),x2(x2),y2(y2),color(color)
+rectangle::rectangle(float x1,float y1,float x2,float y2,Color color,string str):x1(x1),y1(y1),x2(x2),y2(y2),color(color)
 {
+  if (str=="nodraw")
+  return;
   draw();
 
 }
@@ -189,29 +199,29 @@ void rectangle::draw()
 }
 
 
-line line::translate(float xt,float yt)
+line line::translate(float xt,float yt,string str)
 {
-  return line(x1+xt,y1+yt,x1+xt,y2+yt,color);
+  return line(x1+xt,y1+yt,x1+xt,y2+yt,color,str);
 
 }
 
-circle circle::translate(float xt,float yt)
+circle circle::translate(float xt,float yt,string str)
 {
   //return circle(xc+xt,yc+yt,r,color);
-  return circle(xc+xt,yc+yt,r,color);
+  return circle(xc+xt,yc+yt,r,color,str);
 
 }
 
-ellipse ellipse::translate(float xt,float yt)
+ellipse ellipse::translate(float xt,float yt,string str)
 {
-  return ellipse(xc+xt,yc+yt,rx,ry,color);
+  return ellipse(xc+xt,yc+yt,rx,ry,color,str);
 }
-triangle triangle::translate(float xt,float yt)
+triangle triangle::translate(float xt,float yt,string str)
 {
-  return triangle(x1+xt,y1+yt,x2+xt,y2+yt,x3+xt,y3+yt,color);
+  return triangle(x1+xt,y1+yt,x2+xt,y2+yt,x3+xt,y3+yt,color,str);
 }
-rectangle rectangle::translate(float xt,float yt)
+rectangle rectangle::translate(float xt,float yt,string str)
 {
-  return rectangle(x1+xt,y1+yt,x2+xt,y2+yt,color);
+  return rectangle(x1+xt,y1+yt,x2+xt,y2+yt,color,str);
 
 }
