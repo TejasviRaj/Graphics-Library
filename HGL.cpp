@@ -5,7 +5,11 @@ extern "C"
 
 line::line(float x1,float y1,float x2,float y2,Color color):x1(x1),y1(y1),x2(x2),y2(y2),color(color)
 {
+draw();
+}
 
+void line::draw()
+{
   //color=colorz;
   float dx=x2-x1;
   float dy=y2-y1;
@@ -47,9 +51,6 @@ line::line(float x1,float y1,float x2,float y2,Color color):x1(x1),y1(y1),x2(x2)
           y1=y1+yinr;
         }
   }
-
-    //glFlush();
-
 }
 
 void HGL_init(int argc, char **argv) {
@@ -84,6 +85,11 @@ void point(float x, float y, Color color) {
 
 circle::circle(float xc,float yc,float r,Color color):xc(xc),yc(yc),r(r),color(color)
 {
+  draw();
+}
+
+void circle::draw()
+{
   float x=0, y=r;
   float p=1-r;
   while (x<=y)
@@ -108,6 +114,11 @@ circle::circle(float xc,float yc,float r,Color color):xc(xc),yc(yc),r(r),color(c
 }
 
 ellipse::ellipse(float xc,float yc,float rx,float ry, Color color):xc(xc),yc(yc),rx(rx),ry(ry),color(color)
+{
+  draw();
+}
+
+void ellipse::draw()
 {
   //region 1
   float x=0, y=ry;
@@ -149,25 +160,34 @@ ellipse::ellipse(float xc,float yc,float rx,float ry, Color color):xc(xc),yc(yc)
       p-=2*rx*rx*y+rx*rx;
     }
   }
-
 }
 
 triangle::triangle(float x1,float y1,float x2,float y2,float x3,float y3, Color color):x1(x1),y1(y1),x2(x2),y2(y2),x3(x3),y3(y3),color(color)
 {
+  draw();
+}
+
+void triangle::draw()
+{
   line(x1,y1,x2,y2,color);
   line(x2,y2,x3,y3,color);
   line(x3,y3,x1,y1,color);
-
 }
 
 rectangle::rectangle(float x1,float y1,float x2,float y2,Color color):x1(x1),y1(y1),x2(x2),y2(y2),color(color)
+{
+  draw();
+
+}
+
+void rectangle::draw()
 {
   line(x1,y1,x1,y2,color);
   line(x1,y1,x2,y1,color);
   line(x2,y2,x1,y2,color);
   line(x2,y2,x2,y1,color);
-
 }
+
 
 line line::translate(float xt,float yt)
 {
