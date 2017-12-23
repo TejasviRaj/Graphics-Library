@@ -28,11 +28,11 @@ int main(int argc, char **argv) {
   line(300,300,400,300,RED);
   //  line(300,300,400,400,BLUE);
   h(5);
-  circle(300,300,sqrt(100*100+100*100));
-  ellipse(300,300,50,100);
+  circle c(300,300,sqrt(100*100+100*100));
+  ellipse e (300,300,50,100);
   ellipse(300,300,100,50);
-  rectangle(200,200,400,400);
-  triangle(200,200,400,200,300,400,YELLOW);
-
+  rectangle r (200,200,400,400);
+  triangle t (200,200,400,200,300,400,YELLOW);
+  c.translate(-100,-100);
   HGL_End();
 }

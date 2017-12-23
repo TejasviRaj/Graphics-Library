@@ -82,7 +82,7 @@ void point(float x, float y, Color color) {
 
 
 
-circle::circle(float xc,float yc,float r,Color color):xc(xc),yc(yc),color(color)
+circle::circle(float xc,float yc,float r,Color color):xc(xc),yc(yc),r(r),color(color)
 {
   float x=0, y=r;
   float p=1-r;
@@ -166,5 +166,32 @@ rectangle::rectangle(float x1,float y1,float x2,float y2,Color color):x1(x1),y1(
   line(x1,y1,x2,y1,color);
   line(x2,y2,x1,y2,color);
   line(x2,y2,x2,y1,color);
+
+}
+
+line line::translate(float xt,float yt)
+{
+  return line(x1+xt,y1+yt,x1+xt,y2+yt,color);
+
+}
+
+circle circle::translate(float xt,float yt)
+{
+  //return circle(xc+xt,yc+yt,r,color);
+  return circle(xc+xt,yc+yt,r,color);
+
+}
+
+ellipse ellipse::translate(float xt,float yt)
+{
+  return ellipse(xc+xt,yc+yt,rx,ry,color);
+}
+triangle triangle::translate(float xt,float yt)
+{
+  return triangle(x1+xt,y1+yt,x2+xt,y2+yt,x3+xt,y3+yt,color);
+}
+rectangle rectangle::translate(float xt,float yt)
+{
+  return rectangle(x1+xt,y1+yt,x2+xt,y2+yt,color);
 
 }
