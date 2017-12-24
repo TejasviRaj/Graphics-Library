@@ -6,6 +6,6 @@ As the immediate mode is used, it is expected to be quite slow when rendering hi
 
 This was basically created for 'Computer Graphics' project.
 
-#Contributors:
-  -Tejasvi Raj
-  -Kaushal Raj
+# Contributors:
+  - Tejasvi Raj
+  - Kaushal Raj
