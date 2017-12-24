@@ -18,6 +18,7 @@ int main(int argc, char **argv) {
 
   HGL_init(argc,argv);
 
+/*
  line l1(300,300,400,400,WHITE);
   line l2(300,300,400,200,BLUE);
   line l3(300,300,200,400,GREEN);
@@ -36,7 +37,7 @@ int main(int argc, char **argv) {
 //  c.translate(-100,-100,"nodraw").scale(2);
   r.translate(-100,-100,"nodraw").scale(1.2,1.2);
   //clear();
-    l1.remove();
+   l1.remove();
   //  l1.draw();
 /*  c.remove();
   e.remove();
@@ -47,6 +48,10 @@ int main(int argc, char **argv) {
   e.draw();
   t.draw();
   r.draw(); */
+  //l1.scale(0.2,0.2,"nodraw").translate(-50,-50);
+  rectangle t (100,100,300,300,YELLOW);
+  t.scale(0.5,0.5);
+  t.scale(2,2);
 
 
   HGL_End();

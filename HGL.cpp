@@ -232,16 +232,22 @@ rectangle rectangle::translate(float xt,float yt,string str)
 }
 
 
-line line::scale(float xs,float ys,string str)
+line line::scale(float xs,float ys,string str,float csx,float csy)
 {
-  return line(x1*xs,y1*ys,x2*xs,y2*ys,color,str);
+  if (csx==-10000 || csy==-10000)
+  {
+    csx=(x1+x2)/2;
+    csy=(x1+x2)/2;
+  }
+  line l =translate(-csx,-csy,"nodraw");
+  return line(l.x1*xs,l.y1*ys,l.x2*xs,l.y2*ys,color,"nodraw").translate(csx,csy,str);
 
 }
 
 circle circle::scale(float s,string str)
 {
   //return circle(xc+xt,yc+yt,r,color);
-  return circle(xc,yc,r/sqrt(s),color,str);
+  return circle(xc,yc,r*sqrt(s),color,str);
 
 }
 
@@ -251,13 +257,25 @@ ellipse ellipse::scale(float xs,float ys,string str)
   return ellipse(xc,yc,rx/xs,ry/ys,color,str);
 }
 
-triangle triangle::scale(float xs,float ys,string str)
+triangle triangle::scale(float xs,float ys,string str,float csx,float csy)
 {
-  return triangle(x1*xs,y1*ys,x2*xs,y2*ys,x3*xs,y3*ys,color,str);
+  if (csx==-10000 || csy==-10000)
+  {
+    csx=(x1+x2+x3)/3;
+    csy=(y1+y2+y3)/3;
+  }
+    triangle t=translate(-csx,-csy,"nodraw");
+  return triangle(t.x1*xs,t.y1*ys,t.x2*xs,t.y2*ys,t.x3*xs,t.y3*ys,color,"nodraw").translate(csx,csy,str);
 }
-rectangle rectangle::scale(float xs,float ys,string str)
+rectangle rectangle::scale(float xs,float ys,string str,float csx,float csy)
 {
-  return rectangle(x1*xs,y1*ys,x2*xs,y2*ys,color,str);
+  if (csx==-10000 || csy==-10000)
+  {
+    csx=(x1+x2)/2;
+    csy=(y1+y2)/2;
+  }
+  rectangle r=translate(-csx,-csy,"nodraw");
+  return rectangle(r.x1*xs,r.y1*ys,r.x2*xs,r.y2*ys,color,"nodraw").translate(csx,csy,str);
 
 }
 
