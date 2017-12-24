@@ -57,24 +57,27 @@ void line::draw()
   }
 }
 
-void HGL_init(int argc, char **argv) {
+void HGL_run(int argc, char **argv,void (*func)(void))
+{
+  //HGL_init
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
-	glutInitWindowSize(500,500);
-	glutInitWindowPosition(0, 0);
-	glutCreateWindow("Graphics Project");
-	//glClear(GL_COLOR_BUFFER_BIT);
+  glutInitWindowSize(500,500);
+  glutInitWindowPosition(0, 0);
+  glutCreateWindow("Graphics Project");
+  //glClear(GL_COLOR_BUFFER_BIT);
   glClearColor(NONE.r, NONE.g, NONE.b, 1.0);
   glClear(GL_COLOR_BUFFER_BIT);
 
-	glMatrixMode(GL_PROJECTION);
-	gluOrtho2D(0, 500, 0, 500);
-}
+  glMatrixMode(GL_PROJECTION);
+  gluOrtho2D(0, 500, 0, 500);
 
-void HGL_End()
-{
+  //HGL_run
+  glutDisplayFunc(func);
+
+  //HGL_end
   glFlush();
-	glutMainLoop();
+  glutMainLoop();
 }
 
 void point(float x, float y, Color color) {

@@ -7,9 +7,10 @@ using namespace std;
 //class line;
 void init();
 void point(float x, float y, Color color=WHITE);
-void HGL_init(int argc, char **argv);
-void HGL_End();
+//void HGL_init(int argc, char **argv);
+//void HGL_End(void (*func)(void));
 void clear(Color color=NONE);
+void HGL_run(int argc, char **argv,void (*func)(void));
 
 class line
 {
