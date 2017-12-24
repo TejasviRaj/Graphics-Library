@@ -73,18 +73,25 @@ void HGL_run(int argc, char **argv,void (*func)(void))
   gluOrtho2D(0, 500, 0, 500);
 
   //HGL_run
-  glutDisplayFunc(func);
+ glutDisplayFunc(func);
+//func();
 
+  //glutSwapBuffers();
   //HGL_end
   glFlush();
   glutMainLoop();
 }
 
-void point(float x, float y, Color color) {
+void point(float x, float y, Color color, float b,string rotate,float angle,float xc,float yc) {
 	glBegin(GL_POINTS);
-  glColor3f(color.r, color.g, color.b);
+  glColor3f(color.r*b, color.g*b, color.b*b);
+  angle=(PI/180)*angle;
+  if(rotate=="TRUE")
+  {
+    x=(x-xc)*cos(angle)-(y-yc)*sin(angle)+xc;
+    y=(x-xc)*sin(angle)+(y-yc)*cos(angle)+yc;
+  }
 	glVertex2f(x, y);
-
 	glEnd();
 }
 
@@ -131,7 +138,7 @@ ellipse::ellipse(float xc,float yc,float rx,float ry, Color color,string str):xc
   draw();
 }
 
-void ellipse::draw()
+void ellipse::draw(string rotate,float angle,float xcp,float ycp)
 {
   //region 1
   float x=0, y=ry;
@@ -139,10 +146,10 @@ void ellipse::draw()
 
   while (2*ry*ry*x<=2*rx*rx*y)
   {
-    point(x+xc,y+yc,color);
-    point(-x+xc,-y+yc,color);
-    point(-x+xc,y+yc,color);
-    point(x+xc,-y+yc,color);
+    point(x+xc,y+yc,color,1,rotate,angle,xcp,ycp);
+    point(-x+xc,-y+yc,color,1,rotate,angle,xcp,ycp);
+    point(-x+xc,y+yc,color,1,rotate,angle,xcp,ycp);
+    point(x+xc,-y+yc,color,1,rotate,angle,xcp,ycp);
     x++;
     if (p<0)
     p+=2*ry*ry*x+ry*ry;
@@ -311,4 +318,54 @@ void clear(Color color)
 {
   glClearColor(color.r, color.g, color.b, 1.0);
   glClear(GL_COLOR_BUFFER_BIT);
+}
+
+
+
+line line::rotate(float angle,string str,float csx,float csy)
+{
+  angle=(PI/180)*angle;
+  if (csx==-10000 || csy==-10000)
+  {
+    csx=(x1+x2)/2;
+    csy=(y1+y2)/2;
+  }
+  line l =translate(-csx,-csy,"nodraw");
+  return line(l.x1*cos(angle)-l.y1*sin(angle),l.x1*sin(angle)+l.y1*cos(angle),l.x2*cos(angle)-l.y2*sin(angle),l.x2*sin(angle)+l.y2*cos(angle),color,"nodraw").translate(csx,csy,str);
+
+}
+
+ellipse ellipse::rotate(float angle,string str,float csx,float csy)
+{
+  angle=(PI/180)*angle;
+  if (csx==-10000 || csy==-10000)
+  {
+    csx=xc;
+    csy=yc;
+  }
+   ellipse(xc,yc,rx,ry,color,"nodraw").draw("TRUE",PI/2,20,20);
+}
+
+triangle triangle::rotate(float angle,string str,float csx,float csy)
+{
+  angle=(PI/180)*angle;
+  if (csx==-10000 || csy==-10000)
+  {
+    csx=(x1+x2+x3)/3;
+    csy=(y1+y2+y3)/3;
+  }
+    triangle l=translate(-csx,-csy,"nodraw");
+  return triangle(l.x1*cos(angle)-l.y1*sin(angle),l.x1*sin(angle)+l.y1*cos(angle),l.x2*cos(angle)-l.y2*sin(angle),l.x2*sin(angle)+l.y2*cos(angle),l.x3*cos(angle)-l.y3*sin(angle),l.x3*sin(angle)+l.y3*cos(angle),color,"nodraw").translate(csx,csy,str);
+}
+rectangle rectangle::rotate(float angle,string str,float csx,float csy)
+{
+  angle=(PI/180)*angle;
+  if (csx==-10000 || csy==-10000)
+  {
+    csx=(x1+x2)/2;
+    csy=(y1+y2)/2;
+  }
+  rectangle l=translate(-csx,-csy,"nodraw");
+  return rectangle(l.x1*cos(angle)-l.y1*sin(angle),l.x1*sin(angle)+l.y1*cos(angle),l.x2*cos(angle)-l.y2*sin(angle),l.x2*sin(angle)+l.y2*cos(angle),color,"nodraw").translate(csx,csy,str);
+
 }

@@ -3,11 +3,11 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
+#define PI 3.1415926535897932384626433
 
 //class line;
 void init();
-void point(float x, float y, Color color=WHITE);
-//void HGL_init(int argc, char **argv);
+void point(float x, float y, Color color=WHITE, float b=1,string rotate="FALSE",float angle=0,float xc=0,float yc=0);//void HGL_init(int argc, char **argv);
 //void HGL_End(void (*func)(void));
 void clear(Color color=NONE);
 void HGL_run(int argc, char **argv,void (*func)(void));
@@ -23,6 +23,8 @@ class line
 
   line translate(float xt,float yt,string str="Draw");
   line scale(float xs,float ys,string str="Draw",float csx=-10000,float csy=-10000);
+  line rotate(float angle,string str="Draw",float csx=-10000,float csy=-10000);
+
   line remove();
 };
 
@@ -45,11 +47,12 @@ class ellipse
   Color color;
   public:
     ellipse(float xc,float yc,float rx,float ry, Color color=WHITE,string str="Draw");
-    void draw();
+    void draw(string rotate="FALSE",float angle=0,float xc=0,float yc=0);
     ellipse translate(float xt,float yt,string str="Draw");
     ellipse scale(float xs,float ys,string str="Draw");
-
+    ellipse rotate(float angle,string str="Draw",float csx=-10000,float csy=-10000);
     ellipse remove();
+
 
 };
 
@@ -62,6 +65,7 @@ public:
   void draw();
   triangle translate(float xt,float yt,string str="Draw");
   triangle scale(float xs,float ys,string str="Draw",float csx=-10000,float csy=-10000);
+  triangle rotate(float angle,string str="Draw",float csx=-10000,float csy=-10000);
   triangle remove();
 
 
@@ -76,6 +80,7 @@ public:
   void draw();
   rectangle translate(float xt,float yt,string str="Draw");
   rectangle scale(float xs,float ys,string str="Draw",float csx=-10000,float csy=-10000);
+  rectangle rotate(float angle,string str="Draw",float csx=-10000,float csy=-10000);
   rectangle remove();
 
 
