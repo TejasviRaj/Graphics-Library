@@ -35,5 +35,19 @@ int main(int argc, char **argv) {
   triangle t (200,200,400,200,300,400,YELLOW);
 //  c.translate(-100,-100,"nodraw").scale(2);
   r.translate(-100,-100,"nodraw").scale(1.2,1.2);
+  //clear();
+    l1.remove();
+  //  l1.draw();
+/*  c.remove();
+  e.remove();
+  t.remove();
+  r.remove();
+
+  c.draw();
+  e.draw();
+  t.draw();
+  r.draw(); */
+
+
   HGL_End();
 }

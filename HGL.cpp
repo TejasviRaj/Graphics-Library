@@ -63,8 +63,10 @@ void HGL_init(int argc, char **argv) {
 	glutInitWindowSize(500,500);
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("Graphics Project");
-	glClear(GL_COLOR_BUFFER_BIT);
-	glClearColor(0.0, 0.0, 0.0, 1.0);
+	//glClear(GL_COLOR_BUFFER_BIT);
+  glClearColor(NONE.r, NONE.g, NONE.b, 1.0);
+  glClear(GL_COLOR_BUFFER_BIT);
+
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0, 500, 0, 500);
 }
@@ -257,4 +259,35 @@ rectangle rectangle::scale(float xs,float ys,string str)
 {
   return rectangle(x1*xs,y1*ys,x2*xs,y2*ys,color,str);
 
+}
+
+line line::remove()
+{
+  return line(x1,y1,x2,y2,NONE);
+}
+
+circle circle::remove()
+{
+  return circle(xc,yc,r,NONE);
+}
+
+ellipse ellipse::remove()
+{
+  return ellipse(xc,yc,rx,ry,NONE);
+}
+
+triangle triangle::remove()
+{
+  return triangle(x1,y1,x2,y2,x3,y3,NONE);
+}
+
+rectangle rectangle::remove()
+{
+  return rectangle(x1,y1,x2,y2,NONE);
+}
+
+void clear(Color color)
+{
+  glClearColor(color.r, color.g, color.b, 1.0);
+  glClear(GL_COLOR_BUFFER_BIT);
 }

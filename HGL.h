@@ -9,6 +9,7 @@ void init();
 void point(float x, float y, Color color=WHITE);
 void HGL_init(int argc, char **argv);
 void HGL_End();
+void clear(Color color=NONE);
 
 class line
 {
@@ -20,6 +21,7 @@ class line
 
   line translate(float xt,float yt,string str="Draw");
   line scale(float xs,float ys,string str="Draw");
+  line remove();
 };
 
 class circle
@@ -31,6 +33,7 @@ class circle
     void draw();
     circle translate(float xt,float yt,string str="Draw");
     circle scale(float s,string str="Draw");
+    circle remove();
 
 };
 
@@ -44,6 +47,7 @@ class ellipse
     ellipse translate(float xt,float yt,string str="Draw");
     ellipse scale(float xs,float ys,string str="Draw");
 
+    ellipse remove();
 
 };
 
@@ -56,6 +60,7 @@ public:
   void draw();
   triangle translate(float xt,float yt,string str="Draw");
   triangle scale(float xs,float ys,string str="Draw");
+  triangle remove();
 
 
 };
@@ -69,6 +74,7 @@ public:
   void draw();
   rectangle translate(float xt,float yt,string str="Draw");
   rectangle scale(float xs,float ys,string str="Draw");
+  rectangle remove();
 
 
 };
