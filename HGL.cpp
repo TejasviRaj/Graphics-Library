@@ -196,7 +196,7 @@ void triangle::draw()
   line(x3,y3,x1,y1,color);
 }
 
-rectangle::rectangle(float x1,float y1,float x2,float y2,Color color,string str):x1(x1),y1(y1),x2(x2),y2(y2),color(color)
+rectangle::rectangle(float x1,float y1,float x2,float y2,float angle,Color color,string str):x1(x1),y1(y1),x2(x2),y2(y2),color(color),angle(angle)
 {
   if (str=="nodraw")
   return;
@@ -206,10 +206,12 @@ rectangle::rectangle(float x1,float y1,float x2,float y2,Color color,string str)
 
 void rectangle::draw()
 {
-  line(x1,y1,x1,y2,color);
-  line(x1,y1,x2,y1,color);
-  line(x2,y2,x1,y2,color);
-  line(x2,y2,x2,y1,color);
+  float xk=(x1+x2)/2;
+  float yk=(y1+y2)/2;
+  line(x1,y1,x1,y2,color,"nodraw").rotate(angle,"Draw",xk,yk);
+  line(x1,y1,x2,y1,color,"nodraw").rotate(angle,"Draw",xk,yk);
+  line(x2,y2,x1,y2,color,"nodraw").rotate(angle,"Draw",xk,yk);
+  line(x2,y2,x2,y1,color,"nodraw").rotate(angle,"Draw",xk,yk);
 }
 
 
@@ -237,7 +239,7 @@ triangle triangle::translate(float xt,float yt,string str)
 }
 rectangle rectangle::translate(float xt,float yt,string str)
 {
-  return rectangle(x1+xt,y1+yt,x2+xt,y2+yt,color,str);
+  return rectangle(x1+xt,y1+yt,x2+xt,y2+yt,angle,color,str);
 
 }
 
@@ -285,7 +287,7 @@ rectangle rectangle::scale(float xs,float ys,string str,float csx,float csy)
     csy=(y1+y2)/2;
   }
   rectangle r=translate(-csx,-csy,"nodraw");
-  return rectangle(r.x1*xs,r.y1*ys,r.x2*xs,r.y2*ys,color,"nodraw").translate(csx,csy,str);
+  return rectangle(r.x1*xs,r.y1*ys,r.x2*xs,r.y2*ys,angle,color,"nodraw").translate(csx,csy,str);
 
 }
 
@@ -311,7 +313,7 @@ triangle triangle::remove()
 
 rectangle rectangle::remove()
 {
-  return rectangle(x1,y1,x2,y2,NONE);
+  return rectangle(x1,y1,x2,y2,angle,NONE);
 }
 
 void clear(Color color)
@@ -359,13 +361,7 @@ triangle triangle::rotate(float angle,string str,float csx,float csy)
 }
 rectangle rectangle::rotate(float angle,string str,float csx,float csy)
 {
-  angle=(PI/180)*angle;
-  if (csx==-10000 || csy==-10000)
-  {
-    csx=(x1+x2)/2;
-    csy=(y1+y2)/2;
-  }
-  rectangle l=translate(-csx,-csy,"nodraw");
-  return rectangle(l.x1*cos(angle)-l.y1*sin(angle),l.x1*sin(angle)+l.y1*cos(angle),l.x2*cos(angle)-l.y2*sin(angle),l.x2*sin(angle)+l.y2*cos(angle),color,"nodraw").translate(csx,csy,str);
+
+  return rectangle(x1,y1,x2,y2,angle,color,str);
 
 }

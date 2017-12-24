@@ -9,9 +9,8 @@ int main(int argc, char **argv) {
 void display(void)
 {
 
-  ellipse e(200,200,50,100,YELLOW);
-  e.remove();
-  e.rotate(90);
+  rectangle r(200,200,50,100);
+  r.rotate(135);
 //  t.scale(2,2);
 /*
    line l1(300,300,400,400,WHITE);
