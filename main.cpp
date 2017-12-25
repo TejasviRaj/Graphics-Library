@@ -10,7 +10,7 @@ void display(void)
 {
 
   rectangle r(200,200,50,100);
-  r.rotate(135);
+  r.rotate(135).scale(2,2);
 //  t.scale(2,2);
 /*
    line l1(300,300,400,400,WHITE);
