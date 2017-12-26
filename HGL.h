@@ -11,6 +11,8 @@ void point(float x, float y, Color color=WHITE, float b=1,string rotate="FALSE",
 //void HGL_End(void (*func)(void));
 void clear(Color color=NONE);
 void HGL_run(int argc, char **argv,void (*func)(void));
+//void OPENGL_init();
+//void OPENGL_end();
 
 class line
 {
