@@ -4,6 +4,8 @@ extern "C"
 
 const int WINDOW_WIDTH = 1920;
 const int WINDOW_HEIGHT = 1080;
+int fullscreen_flag;
+
 SDL_Event event;
  SDL_Window *window;
  SDL_Renderer *renderer;
@@ -81,7 +83,8 @@ void SDL_initialize()
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
     SDL_RenderClear(renderer);
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-
+    SDL_SetWindowFullscreen(window,0);
+    fullscreen_flag=0;
 	}
 
 
@@ -99,6 +102,31 @@ void SDL_close()
 
 void event_handler()
 {
-    if (SDL_PollEvent(&event) && event.type == SDL_QUIT)
-    SDL_Quit();
+  switch(event.type)
+  {
+    case SDL_KEYDOWN:
+        switch(event.key.keysym.sym)
+        {
+          case SDLK_RETURN:
+                if (fullscreen_flag==1)
+                {
+                  SDL_SetWindowFullscreen(window,SDL_WINDOW_FULLSCREEN);
+                  fullscreen_flag=0;
+                }
+                else
+                {
+                  SDL_SetWindowFullscreen(window,SDL_WINDOW_FULLSCREEN_DESKTOP);
+                  fullscreen_flag=1;
+                }
+                break;
+          case SDLK_ESCAPE:
+                SDL_Quit();
+                break;
+
+        }
+      break;
+    case SDL_QUIT:
+        SDL_Quit();
+        break;
+  }
 }

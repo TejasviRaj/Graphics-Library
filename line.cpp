@@ -94,3 +94,12 @@ line line::rotate(float angle,string str,float csx,float csy)
   return line(l.x1*cos(angle)-l.y1*sin(angle),l.x1*sin(angle)+l.y1*cos(angle),l.x2*cos(angle)-l.y2*sin(angle),l.x2*sin(angle)+l.y2*cos(angle),color,"nodraw").translate(csx,csy,str);
 
 }
+
+line line::move(float xt,float yt,int time,string str)
+{
+//  remove();
+  remove();
+  *this=translate(xt,yt,str);
+  SDL_Delay(time);
+  return *this;
+}

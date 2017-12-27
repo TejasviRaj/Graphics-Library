@@ -49,3 +49,12 @@ rectangle rectangle::rotate(float angle,string str,float csx,float csy)
   return rectangle(x1,y1,x2,y2,angle,color,str);
 
 }
+
+rectangle rectangle::move(float xt,float yt,int time,string str)
+{
+//  remove();
+  remove();
+  *this=translate(xt,yt,str);
+  SDL_Delay(time);
+  return *this;
+}

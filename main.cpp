@@ -11,7 +11,8 @@ void display(void (*eventhandle)(void))
 
 //  rectangle r(200,200,50,100);
 //  r.rotate(135).scale(2,3);
-circle c(0,200,200);
+circle c(300,300,200);
+line(0,501,1926,501);
 while(1)
 {
   if (SDL_PollEvent(&event))
@@ -40,19 +41,28 @@ while(1)
         switch (event.key.keysym.sym)
         {
             case SDLK_LEFT:
-                  c.move(-10,0,100);
+                  c.move(-10,0,20);
                   break;
             case SDLK_RIGHT:
-                  c.move(10,0,100);
+                  c.move(10,0,20);
                   break;
             case SDLK_UP:
-                  c.move(0,-10,100);
+                  c.move(0,-10,20);
                   break;
             case SDLK_DOWN:
-                  c.move(0,10,100);
+                  c.move(0,10,20);
                   break;
         }
         break;
+    /*case SDL_MOUSEMOTION:
+        int mouseX = event.motion.x;
+        int mouseY = event.motion.y;
+
+        std::stringstream ss;
+        ss << "X: " << mouseX << " Y: " << mouseY;
+
+        SDL_SetWindowTitle(window, ss.str().c_str());
+        break;*/
    }
 
   }

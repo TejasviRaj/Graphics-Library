@@ -1,3 +1,4 @@
+// ideal move time=20 and distance=10
 #ifndef HGL_H
 #define HGL_H
 
@@ -39,7 +40,7 @@ class line
   line translate(float xt,float yt,string str="Draw");
   line scale(float xs,float ys,string str="Draw",float csx=-10000,float csy=-10000);
   line rotate(float angle,string str="Draw",float csx=-10000,float csy=-10000);
-
+  line move(float xt,float yt,int time=20,string str="Draw");
   line remove();
 };
 
@@ -51,7 +52,7 @@ class circle
     circle(float xc,float yc,float r, Color color=WHITE,string str="Draw");
     void draw();
     circle translate(float xt,float yt,string str="Draw");
-    circle move(float xt,float yt,int time=100,string str="Draw");
+    circle move(float xt,float yt,int time=20,string str="Draw");
     circle scale(float s,string str="Draw");
     circle remove();
 
@@ -67,6 +68,7 @@ class ellipse
     ellipse translate(float xt,float yt,string str="Draw");
     ellipse scale(float xs,float ys,string str="Draw");
     ellipse rotate(float angle,string str="Draw",float csx=-10000,float csy=-10000);
+    ellipse move(float xt,float yt,int time=20,string str="Draw");
     ellipse remove();
 
 
@@ -82,6 +84,7 @@ public:
   triangle translate(float xt,float yt,string str="Draw");
   triangle scale(float xs,float ys,string str="Draw",float csx=-10000,float csy=-10000);
   triangle rotate(float angle,string str="Draw",float csx=-10000,float csy=-10000);
+  triangle move(float xt,float yt,int time=20,string str="Draw");
   triangle remove();
 
 
@@ -97,6 +100,8 @@ public:
   rectangle translate(float xt,float yt,string str="Draw");
   rectangle scale(float xs,float ys,string str="Draw",float csx=-10000,float csy=-10000);
   rectangle rotate(float angle,string str="Draw",float csx=-10000,float csy=-10000);
+  rectangle move(float xt,float yt,int time=20,string str="Draw");
+
   rectangle remove();
 
 

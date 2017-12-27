@@ -80,3 +80,12 @@ ellipse ellipse::rotate(float angle,string str,float csx,float csy)
   }
    ellipse(xc,yc,rx,ry,color,"nodraw").draw("TRUE",PI/2,20,20);
 }
+
+ellipse ellipse::move(float xt,float yt,int time,string str)
+{
+//  remove();
+  remove();
+  *this=translate(xt,yt,str);
+  SDL_Delay(time);
+  return *this;
+}

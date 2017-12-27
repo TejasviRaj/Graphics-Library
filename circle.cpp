@@ -59,8 +59,7 @@ circle circle::move(float xt,float yt,int time,string str)
 {
 //  remove();
   remove();
-  circle cpp=translate(xt,yt,str);
+  *this=translate(xt,yt,str);
   SDL_Delay(time);
-  *this=cpp;
-  return cpp;
+  return *this;
 }
