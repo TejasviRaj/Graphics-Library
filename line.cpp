@@ -54,6 +54,8 @@ void line::draw()
           y=y+yinr;
         }
   }
+  SDL_RenderPresent(renderer);
+
 }
 
 line line::translate(float xt,float yt,string str)

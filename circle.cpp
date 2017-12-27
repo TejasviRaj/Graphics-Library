@@ -32,6 +32,8 @@ void circle::draw()
       p+=2*x+1-2*y;
     }
   }
+  SDL_RenderPresent(renderer);
+
 }
 
 circle circle::translate(float xt,float yt,string str)

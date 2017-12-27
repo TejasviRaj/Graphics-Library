@@ -1,9 +1,21 @@
+#ifndef HGL_H
+#define HGL_H
+
 #include "Color.h"
 #include <GL/glut.h>
+#include <SDL2/SDL.h>
+#include <stdio.h>
+
 #include <iostream>
 #include <cmath>
 using namespace std;
 #define PI 3.1415926535897932384626433
+
+
+extern SDL_Renderer *renderer;
+extern SDL_Event event;
+ extern SDL_Window *window;
+
 
 //class line;
 void init();
@@ -87,3 +99,5 @@ public:
 
 
 };
+
+#endif

@@ -51,6 +51,8 @@ void ellipse::draw(string rotate,float angle,float xcp,float ycp)
       p-=2*rx*rx*y+rx*rx;
     }
   }
+  SDL_RenderPresent(renderer);
+
 }
 
 ellipse ellipse::translate(float xt,float yt,string str)
