@@ -1,12 +1,12 @@
 #include"HGL.h"
 //#include"Color.h"
-void display(void);
+void display(void (*func)(void));
 
 int main(int argc, char **argv) {
   HGL_run(argc,argv,display);
 }
 
-void display(void)
+void display(void (*eventhandle)(void))
 {
 
 //  rectangle r(200,200,50,100);
@@ -14,26 +14,49 @@ void display(void)
 circle c(0,200,200);
 while(1)
 {
-  if (SDL_PollEvent(&event) && event.type == SDL_MOUSEBUTTONDOWN)
-      switch (event.button.button)
-      {
-          case SDL_BUTTON_LEFT:
-                  c.remove();
-                   c=c.translate(10,0);
-                   SDL_Delay(100);
-                   break;
-
-          case SDL_BUTTON_RIGHT:
-              SDL_ShowSimpleMessageBox(0, "Mouse", "Right button was pressed!", window);
-              break;
-          default:
-              SDL_ShowSimpleMessageBox(0, "Mouse", "Some other button was pressed!", window);
-              break;
-      }
-/*  for (int i=1;i<=100;i++)
+  if (SDL_PollEvent(&event))
   {
+    eventhandle();
+    switch(event.type)
+    {
+      case SDL_MOUSEBUTTONDOWN:
+            switch (event.button.button)
+            {
+                case SDL_BUTTON_LEFT:
+                        c.remove();
+                         c=c.translate(10,0);
+                         SDL_Delay(100);
+                         break;
 
- }*/
+                case SDL_BUTTON_RIGHT:
+                    SDL_ShowSimpleMessageBox(0, "Mouse", "Right button was pressed!", window);
+                    break;
+                default:
+                    SDL_ShowSimpleMessageBox(0, "Mouse", "Some other button was pressed!", window);
+                    break;
+            }
+            break;
+    case SDL_KEYDOWN:
+        switch (event.key.keysym.sym)
+        {
+            case SDLK_LEFT:
+                  c.move(-10,0,100);
+                  break;
+            case SDLK_RIGHT:
+                  c.move(10,0,100);
+                  break;
+            case SDLK_UP:
+                  c.move(0,-10,100);
+                  break;
+            case SDLK_DOWN:
+                  c.move(0,10,100);
+                  break;
+        }
+        break;
+   }
+
+  }
+
 }
 
 

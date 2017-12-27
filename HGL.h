@@ -22,7 +22,8 @@ void init();
 void point(float x, float y, Color color=WHITE, float b=1,string rotate="FALSE",float angle=0,float xc=0,float yc=0);//void HGL_init(int argc, char **argv);
 //void HGL_End(void (*func)(void));
 void clear(Color color=NONE);
-void HGL_run(int argc, char **argv,void (*func)(void));
+void HGL_run(int argc, char **argv,void (*func)(void (*)()))
+;
 //void OPENGL_init();
 //void OPENGL_end();
 
@@ -50,6 +51,7 @@ class circle
     circle(float xc,float yc,float r, Color color=WHITE,string str="Draw");
     void draw();
     circle translate(float xt,float yt,string str="Draw");
+    circle move(float xt,float yt,int time=100,string str="Draw");
     circle scale(float s,string str="Draw");
     circle remove();
 
